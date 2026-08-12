@@ -1,7 +1,7 @@
 {
    "name": "@crysnovax/baileys",
    "version": "2.7.3",
-   "description": "Premium Baileys fork ⚉ Meta compositing, bot planning replay, welcome flow, rich messages (code, table, LaTeX, reels), interactive messages, albums, and more.",
+   "description": "Premium Baileys fork ⚉ Meta  compositing, bot planning replay, welcome flow, rich messages (code, table, LaTeX, reels), interactive messages, albums, and more.",
    "main": "lib/index.js",
    "type": "module",
    "scripts": {
