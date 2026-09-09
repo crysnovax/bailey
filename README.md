@@ -3,13 +3,13 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/npm/v/@crysnovax/baileys?style=for-the-badge&logo=npm&color=10b981&labelColor=0a0f0a" />
+  <img src="https://img.shields.io/npm/v/plogme?style=for-the-badge&logo=npm&color=10b981&labelColor=0a0f0a" />
   <img src="https://img.shields.io/github/stars/crysnovax/baileys?style=for-the-badge&logo=github&color=10b981&labelColor=0a0f0a" />
   <img src="https://img.shields.io/badge/License-Crysnovax-10b981?style=for-the-badge&labelColor=0a0f0a" />
   <img src="https://img.shields.io/badge/Node.js-%3E%3D18-10b981?style=for-the-badge&logo=node.js&labelColor=0a0f0a" />
 </p>
 
-> **License & attribution** — `@crysnovax/baileys` is distributed under the **Crysnovax Source License** (see [`LICENSE`](LICENSE)), not MIT. The package verifies its identity at install time, at runtime, and remotely (`bailey.crysnovax.link`): rebranded or revoked copies refuse to install, print visible warnings, and lose every premium feature added beyond plain messaging (rich messages, Meta AI compositing, welcome flow, rich preview, verified badge, GIF playback, albums, carousels, payments, and more) while plain text/media messaging keeps working. Removing attribution — including via AI-assisted rewrites — is prohibited and may be pursued under copyright law, DMCA takedowns, and npm/GitHub abuse reports. See [Condition of Use](#condition-of-use).
+> **License & attribution** — `plogme` is distributed under the **Crysnovax Source License** (see [`LICENSE`](LICENSE)), not MIT. The package verifies its identity at install time, at runtime, and remotely (`bailey.crysnovax.link`): rebranded or revoked copies refuse to install, print visible warnings, and lose every premium feature added beyond plain messaging (rich messages, Meta AI compositing, welcome flow, rich preview, verified badge, GIF playback, albums, carousels, payments, and more) while plain text/media messaging keeps working. Removing attribution — including via AI-assisted rewrites — is prohibited and may be pursued under copyright law, DMCA takedowns, and npm/GitHub abuse reports. See [Condition of Use](#condition-of-use).
 
 
 <br />
@@ -67,7 +67,7 @@
 
 ## Overview
 
-`@crysnovax/baileys` is a powerful, production-ready WhatsApp API wrapper for Node.js, built on top of the Baileys protocol. It extends the core with rich messaging capabilities, Meta AI-style compositing, and a streamlined developer experience.
+`plogme` is a powerful, production-ready WhatsApp API wrapper for Node.js, built on top of the Baileys protocol. It extends the core with rich messaging capabilities, Meta AI-style compositing, and a streamlined developer experience.
 
 ### What Sets It Apart
 
@@ -100,7 +100,7 @@
 
 ```bash
 # NPM
-npm install @crysnovax/baileys
+npm install plogme
 
 # GitHub
 npm install github:crysnovax/baileys
@@ -110,10 +110,10 @@ Import (ESM & CJS)
 
 ```javascript
 // ESM
-import { makeWASocket } from '@crysnovax/baileys'
+import { makeWASocket } from 'plogme'
 
 // CJS (Node.js 24+)
-const { makeWASocket } = require('@crysnovax/baileys')
+const { makeWASocket } = require('plogme')
 ```
 
 ---
@@ -121,7 +121,7 @@ const { makeWASocket } = require('@crysnovax/baileys')
 ## Quick Start
 
 ```javascript
-import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from '@crysnovax/baileys'
+import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from 'plogme'
 import { Boom } from '@hapi/boom'
 import pino from 'pino'
 
@@ -174,7 +174,7 @@ connectToWhatsApp()
 ### Multi-File Auth State (Recommended)
 
 ```javascript
-import { useMultiFileAuthState } from '@crysnovax/baileys'
+import { useMultiFileAuthState } from 'plogme'
 
 const { state, saveCreds } = await useMultiFileAuthState('session')
 ```
@@ -182,7 +182,7 @@ const { state, saveCreds } = await useMultiFileAuthState('session')
 ### Single-File Auth State (Experimental)
 
 ```javascript
-import { useSingleFileAuthState } from '@crysnovax/baileys'
+import { useSingleFileAuthState } from 'plogme'
 
 const { state, saveCreds } = await useSingleFileAuthState('session.json')
 // Already includes internal caching — no need for makeCacheableSignalKeyStore
@@ -191,7 +191,7 @@ const { state, saveCreds } = await useSingleFileAuthState('session.json')
 ### SQLite Auth State (Experimental)
 
 ```javascript
-import { useSqliteAuthState } from '@crysnovax/baileys'
+import { useSqliteAuthState } from 'plogme'
 
 const { state, saveCreds } = await useSqliteAuthState('session.db')
 ```
@@ -217,12 +217,12 @@ console.log('Pairing code:', customCode)
 sock.sendMessage(jid, { text: 'Hello!' }, { quoted: message })
 
 // With link preview
-const url = 'https://www.npmjs.com/package/@crysnovax/baileys'
+const url = 'https://www.npmjs.com/package/plogme'
 sock.sendMessage(jid, {
   text: url + ' Check it out!',
   linkPreview: {
     'matched-text': url,
-    title: '@crysnovax/baileys',
+    title: 'plogme',
     description: 'WhatsApp API for Node.js',
     previewType: 0,
     jpegThumbnail: fs.readFileSync('./thumb.jpg')
@@ -230,7 +230,7 @@ sock.sendMessage(jid, {
 })
 
 // Large link preview with favicon
-import { prepareWAMessageMedia } from '@crysnovax/baileys'
+import { prepareWAMessageMedia } from 'plogme'
 
 const { imageMessage: image } = await prepareWAMessageMedia(
   { image: { url: './thumb.jpg' } },
@@ -244,7 +244,7 @@ sock.sendMessage(jid, {
   text: url + ' Check it out!',
   linkPreview: {
     'matched-text': url,
-    title: '@crysnovax/baileys',
+    title: 'plogme',
     description: 'WhatsApp API for Node.js',
     previewType: 0,
     jpegThumbnail: fs.readFileSync('./thumb.jpg'),
@@ -514,7 +514,7 @@ sock.sendMessage(jid, {
   ],
   name: 'My Sticker Pack',
   publisher: 'CRYSNOVA',
-  description: '@crysnovax/baileys'
+  description: 'plogme'
 })
 ```
 
@@ -528,7 +528,7 @@ sock.sendMessage(jid, {
 // Buttons
 sock.sendMessage(jid, {
   text: 'Choose an option!',
-  footer: '@crysnovax/baileys',
+  footer: 'plogme',
   buttons: [
     { text: 'Sign Up', id: '#SignUp' }
   ]
@@ -538,7 +538,7 @@ sock.sendMessage(jid, {
 sock.sendMessage(jid, {
   image: { url: './image.jpg' },
   caption: 'Interactive buttons!',
-  footer: '@crysnovax/baileys',
+  footer: 'plogme',
   buttons: [
     { text: 'Rating', id: '#Rating' },
     {
@@ -565,7 +565,7 @@ sock.sendMessage(jid, {
 // List (private chat only)
 sock.sendMessage(jid, {
   text: 'List menu!',
-  footer: '@crysnovax/baileys',
+  footer: 'plogme',
   buttonText: 'Select',
   title: 'Hello',
   sections: [
@@ -592,7 +592,7 @@ sock.sendMessage(jid, {
 sock.sendMessage(jid, {
   image: { url: './image.jpg' },
   caption: 'Interactive!',
-  footer: '@crysnovax/baileys',
+  footer: 'plogme',
   optionText: 'Select Options',
   optionTitle: 'Select Options',
   offerText: 'New Coupon!',
@@ -602,7 +602,7 @@ sock.sendMessage(jid, {
   nativeFlow: [
     { text: 'Greeting', id: '#Greeting', icon: 'review' },
     { text: 'Call', call: '628123456789' },
-    { text: 'Copy', copy: '@crysnovax/baileys' },
+    { text: 'Copy', copy: 'plogme' },
     { text: 'Source', url: 'https://example.com', useWebview: true },
     {
       text: 'Select',
@@ -623,7 +623,7 @@ sock.sendMessage(jid, {
 // Carousel with cards
 sock.sendMessage(jid, {
   text: 'Carousel!',
-  footer: '@crysnovax/baileys',
+  footer: 'plogme',
   cards: [
     {
       image: { url: './img1.jpg' },
@@ -666,7 +666,7 @@ sock.sendMessage(jid, {
   title: 'Hello',
   image: { url: './image.jpg' },
   caption: 'Template!',
-  footer: '@crysnovax/baileys',
+  footer: 'plogme',
   templateButtons: [
     { text: 'Tap Here', id: '#Order' },
     { text: 'Source', url: 'https://example.com' },
@@ -762,7 +762,7 @@ The helper serializes the public native-flow fields (`galaxy_message`, `flow_mes
 Incoming Flow and native-flow responses can be parsed consistently:
 
 ```javascript
-import { parseWhatsAppFlowResponse } from '@crysnovax/baileys'
+import { parseWhatsAppFlowResponse } from 'plogme'
 
 sock.ev.on('messages.upsert', ({ messages }) => {
   for (const message of messages) {
@@ -794,7 +794,7 @@ sock.sendMessage(jid, {
 // Supported languages: css, html, javascript, typescript, python, golang, rust, c, c#, c++, bash, bat, powershell
 
 // Manual tokenization
-import { tokenizeCode } from '@crysnovax/baileys'
+import { tokenizeCode } from 'plogme'
 
 const language = 'javascript'
 const code = 'console.log("Hello, World!")'
@@ -1003,7 +1003,7 @@ await sock.sendMessage(jid, {
     caption: 'Special GIF!',
     externalAdReply: {
         title: 'My Channel',
-        body: '@crysnovax/baileys',
+        body: 'plogme',
         thumbnail: fs.readFileSync('./thumb.jpg'),
         url: 'https://example.com'
     }
@@ -1034,7 +1034,7 @@ The safe default is deliberately universal: it uses WhatsApp’s normal composin
 Show a live thinking indicator that you control. Delete it manually when ready — no "edited" badge ever appears.
 
 ```javascript
-import { metaTyping, buildSteps } from '@crysnovax/baileys'
+import { metaTyping, buildSteps } from 'plogme'
 
 const placeholder = await metaTyping(sock, jid, {
   description: 'Thinking…',
@@ -1069,7 +1069,7 @@ Here is your answer!
 Full flow: indicator shows → auto-deletes → clean final message lands. Works with every rich content type. The final message uses the same proven rich-message composer as ordinary code blocks, tables, links, carousels, and response arrays.
 
 ```javascript
-import { sendMetaComposited, PlanningStepStatus } from '@crysnovax/baileys'
+import { sendMetaComposited, PlanningStepStatus } from 'plogme'
 
 // With code block
 await sendMetaComposited(
@@ -1201,7 +1201,7 @@ await sock.updateRichGeneration(jid, pending.messageId, {
 Live Meta AI-style reasoning feed — each step visibly completes in real time, then the final rich message lands clean.
 
 ```javascript
-import { replayPlanning, mixedSteps } from '@crysnovax/baileys'
+import { replayPlanning, mixedSteps } from 'plogme'
 
 await replayPlanning(
   sock, jid,
@@ -1258,7 +1258,7 @@ import {
   buildSearchSteps,     // isEnhancedSearch: true
   mixedSteps,           // mix any combination
   buildSteps            // plain steps
-} from '@crysnovax/baileys'
+} from 'plogme'
 
 // All reasoning
 buildReasoningSteps(['Analyzing the problem…', 'Checking edge cases…'])
@@ -1277,7 +1277,7 @@ mixedSteps([
 Replay planning only (no final message):
 
 ```javascript
-import { replayPlanningOnly, buildSearchSteps } from '@crysnovax/baileys'
+import { replayPlanningOnly, buildSearchSteps } from 'plogme'
 
 await replayPlanningOnly(
   sock, jid,
@@ -1309,7 +1309,7 @@ Auto-greet new contacts with an interactive FAQ menu. Fires once per contact, ne
 ### Basic Setup
 
 ```javascript
-import { createWelcomeFlow } from '@crysnovax/baileys'
+import { createWelcomeFlow } from 'plogme'
 
 const welcome = createWelcomeFlow(sock, {
   greeting: 'Welcome! How can I help you today?',
@@ -1385,7 +1385,7 @@ welcome.hasGreeted(jid)  // check if greeted → boolean
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | greeting | string | 'Welcome!…' | Body text of welcome message |
-| footer | string | 'Powered by @crysnovax/baileys' | Footer text |
+| footer | string | 'Powered by plogme' | Footer text |
 | buttonText | string | 'Choose an option' | List button label |
 | sectionTitle | string | 'How can we help?' | Section header |
 | faqs | Array | 4 defaults | { id, title, description } |
@@ -1508,7 +1508,7 @@ sock.sendMessage(jid, {
     text: 'Built manually',
     contextInfo: {
       externalAdReply: {
-        title: '@crysnovax/baileys',
+        title: 'plogme',
         thumbnail: fs.readFileSync('./image.jpg'),
         sourceApp: 'whatsapp',
         showAdAttribution: true,
@@ -1774,7 +1774,7 @@ sock.ev.on('poll.vote', event => {
 The low-level helper is available when an application already has the encrypted vote and all cryptographic context. It returns the protobuf `PollVoteMessage`; most applications should use `poll.vote` instead.
 
 ```javascript
-import { decryptPollVote } from '@crysnovax/baileys/lib/Utils/process-message.js'
+import { decryptPollVote } from 'plogme/lib/Utils/process-message.js'
 
 const vote = decryptPollVote(encryptedVote, {
   pollCreatorJid,
@@ -1866,7 +1866,7 @@ saveFavs(remaining)
 
 ```javascript
 // Create
-sock.newsletterCreate('@crysnovax/baileys', 'Fresh updates weekly')
+sock.newsletterCreate('plogme', 'Fresh updates weekly')
 
 // Metadata
 const metadata = await sock.newsletterMetadata('1231111111111@newsletter')
@@ -1887,8 +1887,8 @@ sock.newsletterDemote('1231111111111@newsletter', '6281111111111@s.whatsapp.net'
 sock.newsletterChangeOwner('1231111111111@newsletter', '6281111111111@s.whatsapp.net')
 
 // Update
-sock.newsletterUpdate('1231111111111@newsletter', { name: '@crysnovax/baileys' })
-sock.newsletterUpdateName('1231111111111@newsletter', '@crysnovax/baileys')
+sock.newsletterUpdate('1231111111111@newsletter', { name: 'plogme' })
+sock.newsletterUpdateName('1231111111111@newsletter', 'plogme')
 sock.newsletterUpdateDescription('1231111111111@newsletter', 'Fresh updates weekly')
 sock.newsletterUpdatePicture('1231111111111@newsletter', { url: 'path/to/image.jpg' })
 sock.newsletterRemovePicture('1231111111111@newsletter')
@@ -1915,7 +1915,7 @@ sock.newsletterDelete('1231111111111@newsletter')
 
 ```javascript
 // Create
-const group = await sock.groupCreate('@crysnovax/baileys', ['628123456789@s.whatsapp.net'])
+const group = await sock.groupCreate('plogme', ['628123456789@s.whatsapp.net'])
 
 // Metadata
 const metadata = await sock.groupMetadata(jid)
@@ -1938,7 +1938,7 @@ sock.groupParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'demote')
 sock.groupRequestParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'approve')
 
 // Info updates
-sock.groupUpdateSubject(jid, '@crysnovax/baileys')
+sock.groupUpdateSubject(jid, 'plogme')
 sock.groupUpdateDescription(jid, 'Updated description')
 sock.updateProfilePicture(jid, { url: 'path/to/image.jpg' })
 sock.removeProfilePicture(jid)
@@ -1971,7 +1971,7 @@ const requests = await sock.groupRequestParticipantsList(jid)
 const group = await sock.groupGetInviteInfo('ABC123456789')
 
 // Member label
-sock.updateMemberLabel(jid, '@crysnovax/baileys')
+sock.updateMemberLabel(jid, 'plogme')
 ```
 
 ---
@@ -1980,7 +1980,7 @@ sock.updateMemberLabel(jid, '@crysnovax/baileys')
 
 ```javascript
 // Create
-const community = await sock.communityCreate('@crysnovax/baileys', 'Fresh updates weekly')
+const community = await sock.communityCreate('plogme', 'Fresh updates weekly')
 
 // Create subgroup
 const group = await sock.communityCreateGroup(
@@ -2008,7 +2008,7 @@ sock.communityLeave(jid)
 sock.communityRequestParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'approve')
 
 // Updates
-sock.communityUpdateSubject(jid, '@crysnovax/baileys')
+sock.communityUpdateSubject(jid, 'plogme')
 sock.communityUpdateDescription(jid, 'Updated description')
 
 // Settings
@@ -2583,7 +2583,7 @@ await sock.fetchManagedAccount()
 ### Cache Manager Auth State
 
 ```javascript
-import { makeCacheManagerAuthState } from '@crysnovax/baileys'
+import { makeCacheManagerAuthState } from 'plogme'
 
 const cache = createCache({ stores: [memoryStore()] })
 const { state, saveCreds } = await makeCacheManagerAuthState(cache, 'session-id')
@@ -2638,7 +2638,7 @@ sock.ev.on('settings.update', (update) => {})
 Auto-detects available libraries: sharp, @napi-rs/image, or jimp.
 
 ```javascript
-import { getImageProcessingLibrary } from '@crysnovax/baileys'
+import { getImageProcessingLibrary } from 'plogme'
 import { readFile } from 'fs/promises'
 
 const lib = await getImageProcessingLibrary()
@@ -2678,7 +2678,7 @@ else {
 
 ## ⓘ Condition of Use
 
-By using `@crysnovax/baileys` you agree to the following condition:
+By using `plogme` you agree to the following condition:
 
 This fork will automatically follow the two official CRYSNOVA WhatsApp channels on first connection. This happens once and will not repeat on reconnects.
 

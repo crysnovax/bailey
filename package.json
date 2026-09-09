@@ -1,5 +1,5 @@
 {
-   "name": "@crysnovax/baileys",
+   "name": "plogme",
    "version": "2.7.3",
    "description": "Premium Baileys fork ⚉ Meta  compositing, bot planning replay, welcome flow, rich messages (code, table, LaTeX, reels), interactive messages, albums, and more.",
    "main": "lib/index.js",
@@ -42,7 +42,7 @@
       "whatsapp-group",
       "whatsapp-web"
    ],
-   "homepage": "https://www.npmjs.com/package/@crysnovax/baileys/",
+   "homepage": "https://www.npmjs.com/package/plogme",
    "author": "crysnovax",
    "license": "MIT",
    "dependencies": {
