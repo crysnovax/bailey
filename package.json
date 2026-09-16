@@ -1,6 +1,6 @@
 {
   "name": "plogme",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Production-ready Baileys fork \u2689 with AI groups, Meta AI prompting, safe compositing fallbacks, rich responses, interactive messages, albums, newsletters, and communities \u2014 without antiban wrappers.",
   "main": "lib/index.js",
   "type": "module",

@@ -67,6 +67,80 @@
 
 ## Overview
 
+### Release 1.0.6
+
+The 1.0.6 release documents the current API surface for the authorized implementation. The release includes direct `w:report` operations (`reportUser`, `reportMessage`, and `reportAndBlockUser`) alongside the existing evidence-based `reportSpam` flow, the `toggleGroupHistory(jid, enable)` MEX operation, the configurable `sendRichHtmlMessage` embedded-screen transport, the built-in `sendMiniApp` entry point using the owned `pair.crysnova.link` source, and exact source lookup through `grepSource` or `sock.grepCode`.
+
+The corresponding implementation files in this mock repository are intentionally withheld. They contain only the authorization marker `@crysnovax`; this repository is documentation and release-surface metadata, not an authorized source distribution.
+
+```js
+await sock.reportUser(userJid, 'spam')
+await sock.reportMessage(userJid, messageId, 'harassment', participantJid)
+await sock.reportAndBlockUser(userJid, 'scam')
+
+await sock.toggleGroupHistory(groupJid, true)
+await sock.sendRichHtmlMessage(jid, {
+  title: 'My mini-app',
+  html: '<canvas id="app"></canvas>',
+  url: 'https://your-domain.example',
+  trustedSources: ['your-domain.example']
+})
+await sock.sendMiniApp(jid)
+console.log(sock.grepCode('reportMessage'))
+```
+
+Built-in slot remains on its existing ordinary HTML transport. The generic rich HTML function is user-configurable; only the built-in mini-app uses `pair.crysnova.link`.
+
+#### Complete 1.0.6 feature surface
+
+The release also covers the following message-content branches and protocol helpers. These names are the public input keys or generated message fields; rendering remains dependent on WhatsApp client and server support.
+
+| Area | Supported names |
+|---|---|
+| Status interactions and comments | `statusStickerInteraction`, `statusQuoted`, `statusQuestionAnswer`, `questionResponse`, `comment`, `statusNotification` |
+| Sticker and payment messages | `stickerSyncRMR`, `sendPayment`, `declinePayment`, `cancelPayment` |
+| Calls, encryption, and history | `scheduledCallEdit`, `secretEncrypted`, `encComment`, `encEventResponse`, `messageHistoryBundle`, `messageHistoryNotice` |
+| Newsletter/channel administration | `inviteAdmin`, `newsletterCreate`, `newsletterUpdate`, `newsletterMetadata`, `newsletterFollow`, `newsletterUnfollow`, `newsletterMute`, `newsletterUnmute` |
+| Channel messages | `newsletterReactMessage`, `newsletterFetchMessages`, `newsletterSubscribed`, newsletter picture/name/description updates |
+| Rich and media helpers | albums, carousels, LaTeX, spoilers, external-ad replies, `sendHtmlMessage`, `sendRichHtmlMessage`, and `sendMiniApp` |
+
+Status comments and replies use message content rather than a generic text shortcut:
+
+```js
+await sock.sendMessage(statusJid, {
+  comment: {
+    message: { conversation: 'A comment on this status' },
+    targetMessageKey: statusMessage.key
+  }
+})
+
+await sock.sendMessage(statusJid, {
+  statusQuoted: {
+    type: 1,
+    text: 'Quoted status text',
+    originalStatusId: statusMessage.key
+  }
+})
+```
+
+Channel reactions are handled by the dedicated newsletter method. Passing an empty reaction removes the existing reaction:
+
+```js
+await sock.newsletterReactMessage(
+  '123456789@newsletter',
+  serverMessageId,
+  '👍'
+)
+
+await sock.newsletterReactMessage(
+  '123456789@newsletter',
+  serverMessageId,
+  ''
+)
+```
+
+The mock implementation files for these additions remain authorization placeholders containing only `@crysnovax`; no implementation source is distributed here.
+
 `plogme` is a powerful, production-ready WhatsApp API wrapper for Node.js, built on top of the Baileys protocol. It extends the core with rich messaging capabilities, Meta AI-style compositing, and a streamlined developer experience.
 
 ### What Sets It Apart
