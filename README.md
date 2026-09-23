@@ -1,4 +1,4 @@
-# Plogme
+# Plogme ⚉
 
 **Plogme** is a Node.js WhatsApp Web client built on the Baileys protocol implementation. It provides authentication, messaging, media uploads, groups, status updates, interactive messages, albums, rich responses, Meta AI-style envelopes, HTML screens, and selected WhatsApp Web protocol features.
 
